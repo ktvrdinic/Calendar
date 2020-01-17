@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://ktvrdinic:otocac@cluster0-aquog.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "sl_myJwtSecret"
+}
