@@ -51,15 +51,21 @@ router.get("/", auth, (req, res) => {
 // @desc    Update A Date
 // @access  Private
 router.put("/:did", auth, (req, res) => {
-  let newtempDate = {
-    "userDates.$.title": req.body.title,
-    "userDates.$.start": req.body.start,
-    "userDates.$.end": req.body.end,
-    "userDates.$.allDay": req.body.allDay
-  };
-
-  for (let prop in newtempDate) {
-    if (!newtempDate[prop]) delete newtempDate[prop];
+  let newtempDate;
+  if (!req.body.allDay) {
+    newtempDate = {
+      "userDates.$.title": req.body.title,
+      "userDates.$.start": req.body.start,
+      "userDates.$.end": req.body.end,
+      "userDates.$.allDay": false
+    };
+  } else {
+    newtempDate = {
+      "userDates.$.title": req.body.title,
+      "userDates.$.start": req.body.start,
+      "userDates.$.allDay": req.body.allDay,
+      "userDates.$.allDay": true
+    };
   }
 
   tempDate.updateOne(

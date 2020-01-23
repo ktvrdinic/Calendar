@@ -6,11 +6,6 @@ import {
   DATES_LOADING
 } from "../actions/types";
 
-// initial event data
-/*{ id: nextId(), title: 'Instrukcije Hrvatski', start: new Date(), end: new Date() },
-        { id: nextId(), title: 'Nogomet', start: new Date('Fri Nov 15 2019 18:00:00 GMT+0100 (Central European Standard Time)') },
-        { id: nextId(), title: 'Instrukcije Matematika', start: new Date('Fri Nov 17 2019 14:00:00 GMT+0100 (Central European Standard Time)') }
-    */
 const initialState = {
   dates: [],
   loading: false

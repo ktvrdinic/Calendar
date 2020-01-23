@@ -53,12 +53,14 @@ export const addDate = datee => (dispatch, getState) => {
 };
 
 export const updateDate = event => (dispatch, getState) => {
-  axios.put(`/api/dates/${event._id}`, event, tokenConfig(getState)).then(res =>
-    dispatch({
-      type: UPDATE_DATE,
-      payload: event
-    })
-  );
+  axios
+    .put(`/api/dates/${event._id}`, event, tokenConfig(getState))
+    .then(res => {
+      dispatch({
+        type: UPDATE_DATE,
+        payload: event
+      });
+    });
 };
 
 export const setDatesLoading = () => {
