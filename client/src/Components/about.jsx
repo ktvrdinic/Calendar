@@ -19,7 +19,7 @@ export default class about extends Component {
               <h3>
                 Student: Karlo Tvrdinić
                 <br />
-                Mentor: Tihomir Orehovački
+                Mentor: doc. dr. sc. Tihomir Orehovački
               </h3>
             </header>
           </div>
@@ -35,11 +35,6 @@ export default class about extends Component {
                     The project was designed for the purpose of graduating in
                     2019/2020 at Juraj Dobrila University of Pula.
                   </p>
-                  <h3>
-                    Student: Karlo Tvrdinić
-                    <br />
-                    Mentor: Tihomir Orehovački
-                  </h3>
                 </header>
               </div>
             </Col>
