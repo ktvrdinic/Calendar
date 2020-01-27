@@ -15,7 +15,7 @@ import {
 } from "../actions/dateActions";
 import PropTypes from "prop-types";
 
-import "./scheduler.scss"; // webpack must be configured to do this
+import "./scheduler.scss";
 
 class Scheduler extends React.Component {
   componentDidMount() {
