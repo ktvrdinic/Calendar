@@ -1,6 +1,9 @@
 {
   "name": "scheduler-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.15.1"
+  },
   "description": "Scheduler aplikacija u svrhu diplomskog rada",
   "main": "server.js",
   "scripts": {
