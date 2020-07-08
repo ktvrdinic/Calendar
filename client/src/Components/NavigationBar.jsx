@@ -8,7 +8,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Container
+  Container,
 } from "reactstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -18,16 +18,16 @@ import Logout from "./auth/Logout";
 
 class NavigationBar extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
   static propTypes = {
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
   };
 
   toggle = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   };
 
@@ -74,12 +74,15 @@ class NavigationBar extends Component {
             >
               O nama
             </NavLink>
-            <NavLink
-              style={{ color: "white", textDecoration: "none" }}
-              href="/scheduler"
-            >
-              Kontrolna ploča
-            </NavLink>
+            {user && (
+              <NavLink
+                style={{ color: "white", textDecoration: "none" }}
+                href="/scheduler"
+              >
+                Kontrolna ploča
+              </NavLink>
+            )}
+
             <Nav className="ml-auto" navbar>
               {isAuthenticated ? authLinks : guestLinks}
             </Nav>
@@ -90,8 +93,8 @@ class NavigationBar extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, null)(NavigationBar);

@@ -9,10 +9,18 @@ const tempDate = require("../../models/User");
 router.post("/", auth, (req, res) => {
   tempDate.updateOne(
     { _id: req.user.id },
-    { $push: { userDates: { title: req.body.title, start: req.body.start } } },
+    {
+      $push: {
+        userDates: {
+          title: req.body.title,
+          start: req.body.start,
+          allDay: false,
+        },
+      },
+    },
     (err, result) => {
       if (err) {
-        res.status(404).json({ success: false });
+        res.status(404).json({ success: false, body: result });
       } else {
         res.json({ success: true });
       }
@@ -43,8 +51,8 @@ router.delete("/:did", auth, (req, res) => {
 router.get("/", auth, (req, res) => {
   tempDate
     .findById(req.user.id)
-    .then(Date => res.json(Date.userDates))
-    .catch(err => res.status(404).json({ success: false }));
+    .then((Date) => res.json(Date.userDates))
+    .catch((err) => res.status(404).json({ success: false }));
 });
 
 // @route   UPDATE api/dates/:id
@@ -57,21 +65,20 @@ router.put("/:did", auth, (req, res) => {
       "userDates.$.title": req.body.title,
       "userDates.$.start": req.body.start,
       "userDates.$.end": req.body.end,
-      "userDates.$.allDay": false
+      "userDates.$.allDay": false,
     };
   } else {
     newtempDate = {
       "userDates.$.title": req.body.title,
       "userDates.$.start": req.body.start,
-      "userDates.$.allDay": req.body.allDay,
-      "userDates.$.allDay": true
+      "userDates.$.allDay": true,
     };
   }
 
   tempDate.updateOne(
     {
       _id: req.user.id,
-      "userDates._id": req.params.did
+      "userDates._id": req.params.did,
     },
     { $set: newtempDate },
     (err, result) => {

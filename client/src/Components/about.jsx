@@ -12,15 +12,8 @@ export default class about extends Component {
           <div className="inner">
             <header className="align-center text-center">
               <p>Korišteni alati MongoDB(NoSQL), React.js, Node.js, Redux</p>
-              <p>
-                Projekt je napravljen u svrhu diplomskog rada 2019/2020 godine
-                na Sveučilištu Juraj Dobrila u Puli.
-              </p>
-              <h3>
-                Student: Karlo Tvrdinić
-                <br />
-                Mentor: doc. dr. sc. Tihomir Orehovački
-              </h3>
+              <p>Projekt je napravljen u svrhu vježbe.</p>
+              <h3>mag. inf. Karlo Tvrdinić</h3>
             </header>
           </div>
         </section>
@@ -31,10 +24,7 @@ export default class about extends Component {
               <div className="inner">
                 <header className="align-center text-center">
                   <p>Used tools is MongoDB(NoSQL), React.js, Node.js, Redux</p>
-                  <p>
-                    The project was designed for the purpose of graduating in
-                    2019/2020 at Juraj Dobrila University of Pula.
-                  </p>
+                  <p>The project is designed for the purpose of practice.</p>
                 </header>
               </div>
             </Col>
@@ -48,12 +38,14 @@ export default class about extends Component {
               <div className="image mt-5">
                 <img src={unipu} alt="Pic 01" width="495" height="170" />
               </div>
-              <p>Fakultet informatike u Puli 2. godina diplomskog studja</p>
+              <br /> <br />
+              <p>Zahvale Fakultet informatike u Puli</p>
               <footer>
-                <a href="/#" class="button">
+                <a href="https://www.unipu.hr/" class="button">
                   Learn More
                 </a>
               </footer>
+              <br />
             </Col>
             <Col xs={6} md={4}></Col>
           </Row>

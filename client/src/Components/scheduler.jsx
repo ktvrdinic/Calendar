@@ -11,7 +11,7 @@ import {
   getDates,
   deleteDate,
   addDate,
-  updateDate
+  updateDate,
 } from "../actions/dateActions";
 import PropTypes from "prop-types";
 
@@ -34,7 +34,7 @@ class Scheduler extends React.Component {
           header={{
             left: "prev,next today",
             center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay"
+            right: "dayGridMonth,timeGridWeek,timeGridDay",
           }}
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           selectable={true}
@@ -57,6 +57,7 @@ class Scheduler extends React.Component {
     );
   }
 
+  //
   eventClicked = (index, e) => {
     confirmAlert({
       title: "Odaberite",
@@ -67,28 +68,29 @@ class Scheduler extends React.Component {
           onClick: () => {
             this.props.deleteDate(index.event.extendedProps._id);
             alert("Obrisali ste event.");
-          }
+          },
         },
         {
-          label: "Natrag"
-        }
-      ]
+          label: "Natrag",
+        },
+      ],
     });
   };
 
-  handleEventResize = eventBj => {
+  // Resize event
+  handleEventResize = (eventBj) => {
     let updatedEvent = {
       _id: eventBj.event.extendedProps._id,
       title: eventBj.event.title,
       start: eventBj.event.start,
       end: eventBj.event.end,
-      allDay: eventBj.event.allDay
+      allDay: eventBj.event.allDay,
     };
 
     this.props.updateDate(updatedEvent);
   };
 
-  handleDateClick = arg => {
+  handleDateClick = async (arg) => {
     let ime = window.prompt("Naziv eventa?");
 
     if (ime) {
@@ -96,10 +98,12 @@ class Scheduler extends React.Component {
 
       const newEvent = {
         title: ime,
-        start: arg.date
+        start: arg.date,
+        allDay: false,
       };
 
-      this.props.addDate(newEvent);
+      await this.props.addDate(newEvent);
+      await this.props.getDates();
     }
   };
 
@@ -111,14 +115,14 @@ class Scheduler extends React.Component {
         title: eventBj.event.title,
         start: eventBj.event.start,
         end: eventBj.event.end,
-        allDay: false
+        allDay: false,
       };
     } else {
       updatedEvent = {
         _id: eventBj.event.extendedProps._id,
         title: eventBj.event.title,
         start: eventBj.event.start,
-        allDay: eventBj.event.allDay
+        allDay: eventBj.event.allDay,
       };
     }
 
@@ -128,16 +132,16 @@ class Scheduler extends React.Component {
 
 Scheduler.propTypes = {
   getDates: PropTypes.func.isRequired,
-  date: PropTypes.object.isRequired
+  date: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  date: state.date
+const mapStateToProps = (state) => ({
+  date: state.date,
 });
 
 export default connect(mapStateToProps, {
   getDates,
   deleteDate,
   addDate,
-  updateDate
+  updateDate,
 })(Scheduler);
